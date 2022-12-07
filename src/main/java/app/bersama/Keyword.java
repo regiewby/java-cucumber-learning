@@ -15,25 +15,18 @@ import java.time.Duration;
  * @project java-cucumber-learning
  */
 public class Keyword {
-    private static WebDriver webDriver;
 
-    public Keyword(WebDriver webDriver) {
-        Keyword.webDriver = webDriver;
-    }
-
-    public static void openBrowser(String browserName) {
-        webDriver = new BrowserFactory().launchBrowser(browserName);
-        DriverManager.getInstance().setDriver(webDriver);
-    }
-
-    public static void closeBrowser() {
-        if (webDriver !=  null) {
-            webDriver.close();
-        }
+    public Keyword() {
     }
 
     public static void navigateToUrl(String url) {
-        webDriver.get(url);
+        DriverManager.getInstance().getDriver().get(url);
+    }
+
+    public static void closeBrowser() {
+        if (DriverManager.getInstance().getDriver() !=  null) {
+            DriverManager.getInstance().getDriver().close();
+        }
     }
 
     public static void tapElement(WebElement webElement) {
@@ -47,7 +40,7 @@ public class Keyword {
     }
 
     public static void validateElementIsVisibleAndEnabled(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(webElement));
 
         if (!webElement.isDisplayed() || !webElement.isEnabled()) {
@@ -57,24 +50,24 @@ public class Keyword {
     }
 
     public static void waitElementToBeDisplayed(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(25));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(),Duration.ofSeconds(25));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public static void takeScreenshot() {
         try {
-            TakesScreenshot screenshot = ((TakesScreenshot) webDriver);
+            TakesScreenshot screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver());
             File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
-            File destionationFile = new File("reports/screenshot");
+            File destinationFile = new File("reports/screenshot");
 
-            FileUtils.copyFile(sourceFile, destionationFile);
+            FileUtils.copyFile(sourceFile, destinationFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void assertCurrentUrl(String expectedUrl) {
-        String actualUrl = webDriver.getCurrentUrl();
+        String actualUrl = DriverManager.getInstance().getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl, expectedUrl);
     }
 }

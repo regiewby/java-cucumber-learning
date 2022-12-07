@@ -21,9 +21,14 @@ import java.time.Duration;
  */
 public class CommonStep {
 
+    @Given("navigate to url {string}")
+    public void navigateToUrl(String url) {
+        Keyword.navigateToUrl(url);
+    }
+
     @Given("open browser {string} and go to url {string}")
     public void openBrowserAndGoToUrl(String browserName, String url) {
-        Keyword.openBrowser(browserName);
+//        Keyword.openBrowser(browserName);
         Keyword.navigateToUrl(url);
     }
 
