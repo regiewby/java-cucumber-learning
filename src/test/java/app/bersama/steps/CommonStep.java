@@ -4,6 +4,7 @@ import app.bersama.BrowserFactory;
 import app.bersama.DriverManager;
 import app.bersama.Keyword;
 import app.bersama.pages.LoginPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -50,5 +51,10 @@ public class CommonStep {
     @Then("current url should be {string}")
     public void currentUrlShouldBe(String expectedUrl) {
         Keyword.assertCurrentUrl(expectedUrl);
+    }
+
+    @Then("close browser")
+    public void closeBrowser() {
+        Keyword.closeBrowser();
     }
 }

@@ -6,3 +6,4 @@ Feature: Login
     Given open browser "chrome" and go to url "https://www.saucedemo.com/"
     When login as "standard_user"
     Then current url should be "https://www.saucedemo.com/inventory.html"
+    And close browser
