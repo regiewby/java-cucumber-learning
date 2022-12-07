@@ -33,19 +33,22 @@ public class CommonStep {
         String password = "";
 
         switch (credentialType) {
-            case "standard_user" -> {
+            case "standard_user":
                 userName = "standard_user";
                 password = "secret_sauce";
-            }
-            case "locked_out_user" -> {
+            break;
+
+            case "locked_out_user":
                 userName = "locked_out_user";
                 password = "secret_sauce";
-            }
-            case "invalid_user" -> {
+            break;
+
+            case "invalid_user":
                 userName = "invalid_user";
                 password = "wrong_password";
-            }
-            default -> throw new RuntimeException("credential type doesn't exist");
+            break;
+            default:
+                throw new RuntimeException("credential type doesn't exist");
         }
 
         LoginPage loginPage = new LoginPage(DriverManager.getInstance().getDriver());

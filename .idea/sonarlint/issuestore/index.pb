@@ -1,11 +1,16 @@
 
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-\
-,src/main/java/app/bersama/DriverManager.java,4/e/4e518d1212185af3ac16a52515a739d2ecf567cd
-]
--src/main/java/app/bersama/BrowserFactory.java,9/1/91daa5459b4696b979c6289f743a36f64c7da7b5
 M
 reports/cucumber-reports.html,b/f/bf5ae5fe69a81c6c1c12a7a9c1a1df3e862426e3
 M
 reports/cucumber-reports.json,5/b/5b62361cbac9deff1d667a1af7593160f8acd930
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+^
+.src/test/java/app/bersama/steps/OrderStep.java,b/2/b2eb60b14c56e0768ffb6562413a151c87dce602
+V
+&src/main/java/app/bersama/Keyword.java,a/b/ab87cb82ed3cb8f9464a5042619d571f452b3a2a
+^
+.src/test/java/app/bersama/pages/LoginPage.java,0/b/0bae2d2fe86fb33629963ea0d8855a8df5ad159f
+^
+.src/test/java/app/bersama/steps/LoginStep.java,2/b/2b95244554f073f9a1af2f1a686a67d7a26a8685

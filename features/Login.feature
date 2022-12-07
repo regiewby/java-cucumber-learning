@@ -15,4 +15,5 @@ Feature: Login
       Then user verify error message with value "<errorMessage>"
         | errorMessage                                                              |
         | Epic sadface: Username and password do not match any user in this service |
+      And close browser
 
