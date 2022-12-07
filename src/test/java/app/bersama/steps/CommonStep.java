@@ -5,6 +5,7 @@ import app.bersama.DriverManager;
 import app.bersama.Keyword;
 import app.bersama.pages.LoginPage;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.WebDriver;
@@ -44,5 +45,10 @@ public class CommonStep {
 
         LoginPage loginPage = new LoginPage(DriverManager.getInstance().getDriver());
         loginPage.userLogin(userName, password);
+    }
+
+    @Then("current url should be {string}")
+    public void currentUrlShouldBe(String expectedUrl) {
+        Keyword.assertCurrentUrl(expectedUrl);
     }
 }

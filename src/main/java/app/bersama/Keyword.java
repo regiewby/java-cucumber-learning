@@ -1,11 +1,13 @@
 package app.bersama;
 
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.cucumber.java.an.E;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
+import java.io.File;
 import java.time.Duration;
 
 /**
@@ -57,5 +59,22 @@ public class Keyword {
     public static void waitElementToBeDisplayed(WebElement element) {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(25));
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void takeScreenshot() {
+        try {
+            TakesScreenshot screenshot = ((TakesScreenshot) webDriver);
+            File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
+            File destionationFile = new File("reports/screenshot");
+
+            FileUtils.copyFile(sourceFile, destionationFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void assertCurrentUrl(String expectedUrl) {
+        String actualUrl = webDriver.getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl);
     }
 }
