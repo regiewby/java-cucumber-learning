@@ -1,5 +1,6 @@
 package app.bersama.pages;
 
+import app.bersama.Keyword;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,5 +22,16 @@ public class HomePage {
         this.webDriver = driver;
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         PageFactory.initElements(webDriver, this);
+    }
+
+    @FindBy(id = "react-burger-menu-btn")
+    private WebElement button_burger;
+
+    @FindBy(id = "logout_sidebar_link")
+    private WebElement button_logout;
+
+    public void userLogout() {
+        Keyword.tapElement(button_burger);
+        Keyword.tapElement(button_logout);
     }
 }

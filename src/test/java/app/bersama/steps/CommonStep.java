@@ -3,6 +3,7 @@ package app.bersama.steps;
 import app.bersama.BrowserFactory;
 import app.bersama.DriverManager;
 import app.bersama.Keyword;
+import app.bersama.pages.HomePage;
 import app.bersama.pages.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -63,5 +64,11 @@ public class CommonStep {
     @Then("close browser")
     public void closeBrowser() {
         Keyword.closeBrowser();
+    }
+
+    @Then("user logout")
+    public  void userLogout() {
+        HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
+        homePage.userLogout();
     }
 }
