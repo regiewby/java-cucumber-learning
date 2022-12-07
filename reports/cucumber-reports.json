@@ -1,0 +1,84 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2022-12-07T12:03:47.522Z",
+        "line": 5,
+        "name": "As a user i should be able to login",
+        "description": "",
+        "id": "login;as-a-user-i-should-be-able-to-login",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5586491000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "open browser \"chrome\" and go to url \"https://www.saucedemo.com/\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"chrome\"",
+                  "offset": 13
+                },
+                {
+                  "val": "\"https://www.saucedemo.com/\"",
+                  "offset": 36
+                }
+              ],
+              "location": "app.bersama.steps.CommonStep.openBrowserAndGoToUrl(java.lang.String,java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 334430000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "login as \"standard_user\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"standard_user\"",
+                  "offset": 9
+                }
+              ],
+              "location": "app.bersama.steps.CommonStep.loginAs(java.lang.String)"
+            },
+            "keyword": "When "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login"
+          },
+          {
+            "name": "@login"
+          },
+          {
+            "name": "@positive"
+          }
+        ]
+      }
+    ],
+    "name": "Login",
+    "description": "",
+    "id": "login",
+    "keyword": "Feature",
+    "uri": "file:features/Login.feature",
+    "tags": [
+      {
+        "name": "@login",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
