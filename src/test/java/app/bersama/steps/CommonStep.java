@@ -41,6 +41,10 @@ public class CommonStep {
                 userName = "locked_out_user";
                 password = "secret_sauce";
             }
+            case "invalid_user" -> {
+                userName = "invalid_user";
+                password = "wrong_password";
+            }
             default -> throw new RuntimeException("credential type doesn't exist");
         }
 
