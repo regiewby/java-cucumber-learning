@@ -10,7 +10,3 @@ M
 .src/test/java/app/bersama/steps/OrderStep.java,b/2/b2eb60b14c56e0768ffb6562413a151c87dce602
 V
 &src/main/java/app/bersama/Keyword.java,a/b/ab87cb82ed3cb8f9464a5042619d571f452b3a2a
-^
-.src/test/java/app/bersama/pages/LoginPage.java,0/b/0bae2d2fe86fb33629963ea0d8855a8df5ad159f
-^
-.src/test/java/app/bersama/steps/LoginStep.java,2/b/2b95244554f073f9a1af2f1a686a67d7a26a8685

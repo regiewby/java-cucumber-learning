@@ -9,11 +9,12 @@ Feature: Login
     And close browser
 
     @login @negative
-    Scenario: As a user i should not be able to login because credential is not valid
+    Scenario Outline: As a user i should not be able to login because credential is not valid
       Given open browser "chrome" and go to url "https://www.saucedemo.com/"
       When login as "invalid_user"
       Then user verify error message with value "<errorMessage>"
+      And close browser
+      Examples:
         | errorMessage                                                              |
         | Epic sadface: Username and password do not match any user in this service |
-      And close browser
 
