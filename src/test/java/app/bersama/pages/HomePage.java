@@ -30,8 +30,16 @@ public class HomePage {
     @FindBy(id = "logout_sidebar_link")
     private WebElement button_logout;
 
+    @FindBy(id = "about_sidebar_link")
+    private WebElement button_about;
+
     public void userLogout() {
         Keyword.tapElement(button_burger);
         Keyword.tapElement(button_logout);
+    }
+
+    public void aboutPage() {
+        Keyword.tapElement(button_burger);
+        Keyword.tapElement(button_about);
     }
 }

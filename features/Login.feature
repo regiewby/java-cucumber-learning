@@ -26,3 +26,11 @@ Feature: Login
         | errorMessage                                                              |
         | Epic sadface: Username and password do not match any user in this service |
 
+  @About @positive
+  Scenario: As a user i should be able to direct to about page
+    Given open browser "headless chrome" and go to url "https://www.saucedemo.com/"
+    And login as "standard_user"
+    And current url should be "https://www.saucedemo.com/inventory.html"
+    When user click about sidebar
+    Then current url should be "https://saucelabs.com/"
+    * close browser

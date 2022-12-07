@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
  * @project java-cucumber-learning
  */
 
-@CucumberOptions(features = "features",
+@CucumberOptions(features = "features/Login.feature:30",
         glue = "app.bersama.steps",
         plugin = {
                 "pretty",

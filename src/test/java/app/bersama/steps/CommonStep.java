@@ -67,8 +67,14 @@ public class CommonStep {
     }
 
     @Then("user logout")
-    public  void userLogout() {
+    public void userLogout() {
         HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
         homePage.userLogout();
+    }
+
+    @When("user click about sidebar")
+    public void userClickAboutSidebar() {
+        HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
+        homePage.aboutPage();
     }
 }
