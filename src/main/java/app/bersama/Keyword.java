@@ -16,9 +16,6 @@ import java.time.Duration;
  */
 public class Keyword {
 
-    public Keyword() {
-    }
-
     public static void navigateToUrl(String url) {
         DriverManager.getInstance().getDriver().get(url);
     }

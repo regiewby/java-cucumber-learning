@@ -26,14 +26,14 @@ import java.time.Duration;
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
-    @DataProvider(parallel = false)
+    @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return super.scenarios();
     }
 
     @BeforeMethod
     public void setupBrowser() {
-        WebDriver webDriver = new BrowserFactory().launchBrowser("chrome");
+        WebDriver webDriver = new BrowserFactory().launchBrowser("headless chrome");
         webDriver.manage().window().fullscreen();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         DriverManager.getInstance().setDriver(webDriver);
@@ -41,6 +41,6 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     @AfterMethod
     public void teardownBrowser() {
-        DriverManager.getInstance().getDriver();
+        DriverManager.getInstance().getDriver().close();
     }
 }
