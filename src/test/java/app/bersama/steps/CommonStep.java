@@ -1,6 +1,5 @@
 package app.bersama.steps;
 
-import app.bersama.BrowserFactory;
 import app.bersama.DriverManager;
 import app.bersama.Keyword;
 import app.bersama.pages.HomePage;
@@ -9,11 +8,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.K;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.time.Duration;
 
 /**
  * @author regiewby on 05/12/22
@@ -21,9 +15,9 @@ import java.time.Duration;
  */
 public class CommonStep {
 
-    @Given("open browser {string} and go to url {string}")
-    public void openBrowserAndGoToUrl(String browserName, String url) {
-        Keyword.openBrowser(browserName);
+
+    @Given("navigate to url {string}")
+    public void navigateToUrl(String url) {
         Keyword.navigateToUrl(url);
     }
 
@@ -37,17 +31,18 @@ public class CommonStep {
             case "standard_user":
                 userName = "standard_user";
                 password = "secret_sauce";
-            break;
+                break;
 
             case "locked_out_user":
                 userName = "locked_out_user";
                 password = "secret_sauce";
-            break;
+                break;
 
             case "invalid_user":
                 userName = "invalid_user";
                 password = "wrong_password";
-            break;
+                break;
+
             default:
                 throw new RuntimeException("credential type doesn't exist");
         }
@@ -61,10 +56,6 @@ public class CommonStep {
         Keyword.assertCurrentUrl(expectedUrl);
     }
 
-    @Then("close browser")
-    public void closeBrowser() {
-        Keyword.closeBrowser();
-    }
 
     @Then("user logout")
     public void userLogout() {
@@ -72,9 +63,8 @@ public class CommonStep {
         homePage.userLogout();
     }
 
-    @When("user click about sidebar")
-    public void userClickAboutSidebar() {
-        HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
-        homePage.aboutPage();
+    @And("user take screenshot full page with name {string}")
+    public void userTakeScreenshotFullPageWithName(String fileName) {
+        Keyword.takeScreenshot(fileName);
     }
 }

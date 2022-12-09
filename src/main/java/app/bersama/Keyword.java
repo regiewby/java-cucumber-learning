@@ -1,6 +1,6 @@
 package app.bersama;
 
-import io.cucumber.java.an.E;
+import app.bersama.enums.FileType;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.File;
-import java.io.StringReader;
 import java.time.Duration;
 
 /**
@@ -16,25 +15,9 @@ import java.time.Duration;
  * @project java-cucumber-learning
  */
 public class Keyword {
-    private static WebDriver webDriver;
-
-    public Keyword(WebDriver webDriver) {
-        Keyword.webDriver = webDriver;
-    }
-
-    public static void openBrowser(String browserName) {
-        webDriver = new BrowserFactory().launchBrowser(browserName);
-        DriverManager.getInstance().setDriver(webDriver);
-    }
-
-    public static void closeBrowser() {
-        if (webDriver !=  null) {
-            webDriver.close();
-        }
-    }
 
     public static void navigateToUrl(String url) {
-        webDriver.get(url);
+        DriverManager.getInstance().getDriver().get(url);
     }
 
     public static void tapElement(WebElement webElement) {
@@ -48,7 +31,7 @@ public class Keyword {
     }
 
     public static void validateElementIsVisibleAndEnabled(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(webElement));
 
         if (!webElement.isDisplayed() || !webElement.isEnabled()) {
@@ -58,13 +41,13 @@ public class Keyword {
     }
 
     public static void waitElementToBeDisplayed(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(25));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(25));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public static void takeScreenshot() {
         try {
-            TakesScreenshot screenshot = ((TakesScreenshot) webDriver);
+            TakesScreenshot screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver());
             File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
             File destionationFile = new File("reports/screenshot");
 
@@ -75,7 +58,19 @@ public class Keyword {
     }
 
     public static void assertCurrentUrl(String expectedUrl) {
-        String actualUrl = webDriver.getCurrentUrl();
+        String actualUrl = DriverManager.getInstance().getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl, expectedUrl);
+    }
+
+    public static void takeScreenshot(String fileName) {
+        try {
+            TakesScreenshot screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver());
+            File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
+            File destinationFile = new File("reports/screenshots" + File.separator + fileName + "." + FileType.PNG.name());
+
+            FileUtils.copyFile(sourceFile, destinationFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
