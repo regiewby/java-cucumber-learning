@@ -1,6 +1,5 @@
 package app.bersama.steps;
 
-import app.bersama.BrowserFactory;
 import app.bersama.DriverManager;
 import app.bersama.Keyword;
 import app.bersama.pages.HomePage;
@@ -9,11 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.K;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.time.Duration;
 
 /**
  * @author regiewby on 05/12/22
@@ -26,12 +21,6 @@ public class CommonStep {
         Keyword.navigateToUrl(url);
     }
 
-    @Given("open browser {string} and go to url {string}")
-    public void openBrowserAndGoToUrl(String browserName, String url) {
-//        Keyword.openBrowser(browserName);
-        Keyword.navigateToUrl(url);
-    }
-
     @When("login as {string}")
     public void loginAs(String credentialType) {
 
@@ -39,22 +28,19 @@ public class CommonStep {
         String password = "";
 
         switch (credentialType) {
-            case "standard_user":
+            case "standard_user" -> {
                 userName = "standard_user";
                 password = "secret_sauce";
-            break;
-
-            case "locked_out_user":
+            }
+            case "locked_out_user" -> {
                 userName = "locked_out_user";
                 password = "secret_sauce";
-            break;
-
-            case "invalid_user":
+            }
+            case "invalid_user" -> {
                 userName = "invalid_user";
                 password = "wrong_password";
-            break;
-            default:
-                throw new RuntimeException("credential type doesn't exist");
+            }
+            default -> throw new RuntimeException("credential type doesn't exist");
         }
 
         LoginPage loginPage = new LoginPage(DriverManager.getInstance().getDriver());
@@ -75,5 +61,10 @@ public class CommonStep {
     public  void userLogout() {
         HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
         homePage.userLogout();
+    }
+
+    @And("user take screenshot full page with name {string}")
+    public void userTakeScreenshotFullPageWithName(String fileName) {
+        Keyword.takeScreenshot(fileName);
     }
 }
