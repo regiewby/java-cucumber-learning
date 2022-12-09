@@ -33,4 +33,3 @@ Feature: Login
     And current url should be "https://www.saucedemo.com/inventory.html"
     When user click about sidebar
     Then current url should be "https://saucelabs.com/"
-    * close browser
