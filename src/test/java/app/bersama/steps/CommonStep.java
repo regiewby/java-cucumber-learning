@@ -1,19 +1,12 @@
 package app.bersama.steps;
 
-import app.bersama.BrowserFactory;
 import app.bersama.DriverManager;
 import app.bersama.Keyword;
 import app.bersama.pages.HomePage;
 import app.bersama.pages.LoginPage;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.K;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.time.Duration;
 
 /**
  * @author regiewby on 05/12/22

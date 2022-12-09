@@ -33,6 +33,7 @@ public class HomePage {
     @FindBy(id = "about_sidebar_link")
     private WebElement button_about;
 
+
     public void userLogout() {
         Keyword.tapElement(button_burger);
         Keyword.tapElement(button_logout);
@@ -42,6 +43,8 @@ public class HomePage {
         Keyword.tapElement(button_burger);
         Keyword.tapElement(button_about);
     }
+
+
 
 
 }
