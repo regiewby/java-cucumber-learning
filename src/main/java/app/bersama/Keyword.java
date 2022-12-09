@@ -1,7 +1,6 @@
 package app.bersama;
 
 import app.bersama.enums.FileType;
-import io.cucumber.java.an.E;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.File;
+import java.io.StringReader;
 import java.time.Duration;
 
 /**
@@ -54,9 +54,6 @@ public class Keyword {
 
     public static void takeScreenshot(String fileName) {
         try {
-            WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(15));
-            wait.withTimeout(Duration.ofSeconds(15));
-
             TakesScreenshot screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver());
             File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
             File destinationFile = new File("reports/screenshots" + File.separator + fileName + "." + FileType.PNG.name());
