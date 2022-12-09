@@ -30,23 +30,21 @@ public class HomePage {
     @FindBy(id = "logout_sidebar_link")
     private WebElement button_logout;
 
-    @FindBy(id= "add-to-cart-sauce-labs-backpack")
-    private WebElement add_cart1;
+    @FindBy(id = "about_sidebar_link")
+    private WebElement button_about;
 
-    @FindBy(id="add-to-cart-sauce-labs-bike-light")
-    private WebElement add_cart2;
-
-    @FindBy(xpath = "//*[@id='shopping_cart_container']/a")
-    private WebElement button_cart;
 
     public void userLogout() {
         Keyword.tapElement(button_burger);
         Keyword.tapElement(button_logout);
     }
 
-    public void addToCart() {
-        Keyword.tapElement(add_cart1);
-        Keyword.tapElement(add_cart2);
-        Keyword.tapElement(button_cart);
+    public void tapAbout(){
+        Keyword.tapElement(button_burger);
+        Keyword.tapElement(button_about);
     }
+
+
+
+
 }
