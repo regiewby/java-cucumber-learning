@@ -19,8 +19,8 @@ import java.time.Duration;
         tags = "",
         plugin = {
                 "pretty",
-                "html:reports/cucumber-reports.html",
-                "json:reports/cucumber-reports.json"
+                "html:reports/cucumber-result/cucumber-reports.html",
+                "json:reports/cucumber-result/cucumber-reports.json"
 }, monochrome = true)
 
 public class TestRunner extends AbstractTestNGCucumberTests {

@@ -1,6 +1,6 @@
 package app.bersama;
 
-import io.cucumber.java.an.E;
+import app.bersama.enums.FileType;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -52,11 +52,11 @@ public class Keyword {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static void takeScreenshot() {
+    public static void takeScreenshot(String fileName) {
         try {
             TakesScreenshot screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver());
             File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
-            File destinationFile = new File("reports/screenshot");
+            File destinationFile = new File("reports/screenshots" + File.separator + fileName + "." + FileType.PNG.name());
 
             FileUtils.copyFile(sourceFile, destinationFile);
         } catch (Exception e) {

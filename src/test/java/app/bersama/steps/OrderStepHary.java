@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
  * @author regiewby on 07/12/22
  * @project java-cucumber-learning
  */
-public class OrderStep {
+public class OrderStepHary {
 
     @When("user add products to cart")
     public void userAddProductsToCart() {
