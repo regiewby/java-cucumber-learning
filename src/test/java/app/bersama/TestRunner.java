@@ -14,12 +14,13 @@ import java.time.Duration;
  * @project java-cucumber-learning
  */
 
-@CucumberOptions(features = "features/OrderPasha.feature:5",
+@CucumberOptions(features = "features",
         glue = "app.bersama.steps",
+        tags = "",
         plugin = {
                 "pretty",
-                "html:reports/cucumber-reports.html",
-                "json:reports/cucumber-reports.json"
+                "html:reports/cucumber-result/cucumber-reports.html",
+                "json:reports/cucumber-result/cucumber-reports.json"
 }, monochrome = true)
 
 public class TestRunner extends AbstractTestNGCucumberTests {
@@ -32,8 +33,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     @BeforeMethod
     public void setupBrowser() {
-        WebDriver webDriver = new BrowserFactory().launchBrowser("headless chrome");
-        webDriver.manage().window().fullscreen();
+        WebDriver webDriver = new BrowserFactory().launchBrowser("chrome");
+        webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         DriverManager.getInstance().setDriver(webDriver);
     }
