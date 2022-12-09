@@ -20,12 +20,6 @@ public class Keyword {
         DriverManager.getInstance().getDriver().get(url);
     }
 
-    public static void closeBrowser() {
-        if (DriverManager.getInstance().getDriver() !=  null) {
-            DriverManager.getInstance().getDriver().close();
-        }
-    }
-
     public static void tapElement(WebElement webElement) {
         waitElementToBeDisplayed(webElement);
         webElement.click();
@@ -47,8 +41,25 @@ public class Keyword {
     }
 
     public static void waitElementToBeDisplayed(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(),Duration.ofSeconds(25));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(25));
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void takeScreenshot() {
+        try {
+            TakesScreenshot screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver());
+            File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
+            File destionationFile = new File("reports/screenshot");
+
+            FileUtils.copyFile(sourceFile, destionationFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void assertCurrentUrl(String expectedUrl) {
+        String actualUrl = DriverManager.getInstance().getDriver().getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl);
     }
 
     public static void takeScreenshot(String fileName) {
@@ -61,10 +72,5 @@ public class Keyword {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void assertCurrentUrl(String expectedUrl) {
-        String actualUrl = DriverManager.getInstance().getDriver().getCurrentUrl();
-        Assert.assertEquals(actualUrl, expectedUrl);
     }
 }

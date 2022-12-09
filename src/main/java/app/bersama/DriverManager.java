@@ -27,9 +27,4 @@ public class DriverManager {
     public void setDriver(WebDriver webDriver) {
         driver.set(webDriver);
     }
-
-    public void closeBrowser() {
-        driver.get().close();
-        driver.remove();
-    }
 }

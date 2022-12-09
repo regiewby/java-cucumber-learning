@@ -9,12 +9,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-
 /**
  * @author regiewby on 05/12/22
  * @project java-cucumber-learning
  */
 public class CommonStep {
+
 
     @Given("navigate to url {string}")
     public void navigateToUrl(String url) {
@@ -28,19 +28,23 @@ public class CommonStep {
         String password = "";
 
         switch (credentialType) {
-            case "standard_user" -> {
+            case "standard_user":
                 userName = "standard_user";
                 password = "secret_sauce";
-            }
-            case "locked_out_user" -> {
+                break;
+
+            case "locked_out_user":
                 userName = "locked_out_user";
                 password = "secret_sauce";
-            }
-            case "invalid_user" -> {
+                break;
+
+            case "invalid_user":
                 userName = "invalid_user";
                 password = "wrong_password";
-            }
-            default -> throw new RuntimeException("credential type doesn't exist");
+                break;
+
+            default:
+                throw new RuntimeException("credential type doesn't exist");
         }
 
         LoginPage loginPage = new LoginPage(DriverManager.getInstance().getDriver());
@@ -52,13 +56,9 @@ public class CommonStep {
         Keyword.assertCurrentUrl(expectedUrl);
     }
 
-    @Then("close browser")
-    public void closeBrowser() {
-        Keyword.closeBrowser();
-    }
 
     @Then("user logout")
-    public  void userLogout() {
+    public void userLogout() {
         HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
         homePage.userLogout();
     }
